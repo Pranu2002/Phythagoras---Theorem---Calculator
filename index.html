@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pythagorean Theorem Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 10px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .input-group input[type="button"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        
+        .result {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pythagorean Theorem Calculator</h1>
+    
+    <div class="input-group">
+        <label for="sideA">Side A:</label>
+        <input type="number" id="sideA">
+    </div>
+    
+    <div class="input-group">
+        <label for="sideB">Side B:</label>
+        <input type="number" id="sideB">
+    </div>
+    
+    <div class="input-group">
+        <label for="decimalPlaces">Decimal Places:</label>
+        <input type="number" id="decimalPlaces">
+    </div>
+    
+    <div class="input-group">
+        <input type="button" value="Calculate" onclick="calculate()">
+    </div>
+    
+    <div class="result" id="result"></div>
+    
+    <script>
+        function calculate() {
+            var sideA = parseFloat(document.getElementById("sideA").value);
+            var sideB = parseFloat(document.getElementById("sideB").value);
+            var decimalPlaces = parseInt(document.getElementById("decimalPlaces").value);
+            
+            if (isNaN(sideA) || isNaN(sideB)) {
+                document.getElementById("result").innerHTML = "Please enter valid values for Side A and Side B.";
+            } else if (isNaN(decimalPlaces) || decimalPlaces < 0) {
+                document.getElementById("result").innerHTML = "Please enter a valid number of decimal places.";
+            } else {
+                var sideC = Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2));
+                var roundedSideC = sideC.toFixed(decimalPlaces);
+                document.getElementById("result").innerHTML = "Side C: " + roundedSideC;
+            }
+        }
+    </script>
+</body>
+</html>
